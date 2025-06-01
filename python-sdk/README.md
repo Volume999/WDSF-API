@@ -2,17 +2,34 @@
 
 This SDK allows querying WDSF api, powered by strong typing and clear communication interface
 
-## Installation
+## Development
 
 Install dependencies
 ```bash
   poetry install
 ```
 
-# API Documentation
+Activate shell
+```bash
+poetry shell
+# Or
+eval $(poetry env activate)
+```
+
+Run formatting
+```bash
+make fmt
+```
+
+Run style check & tests
+```bash
+make
+```
+
+# Documentation
 
 For documentation of API parameters, see Project's Wiki
 
-# API Testing
+# Testing
 
 See [Testing section](https://github.com/jaykay-design/WDSF-API/wiki/Accessing-the-service#testing) for API testing
