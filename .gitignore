@@ -6,3 +6,8 @@ Obj
 *.user
 *.suo
 .vs
+
+# python
+.idea
+.python-version
+
