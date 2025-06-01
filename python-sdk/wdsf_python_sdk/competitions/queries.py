@@ -2,7 +2,7 @@ from datetime import datetime
 from dataclasses import dataclass
 from enum import StrEnum
 
-from wdsf_python_client.query import Query
+from wdsf_python_sdk.query import Query
 
 
 class CompetitionStatus(StrEnum):

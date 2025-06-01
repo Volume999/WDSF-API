@@ -2,7 +2,7 @@ from datetime import datetime
 
 import pytest
 
-from wdsf_python_client.competitions.queries import CompetitionQuery, CompetitionStatus
+from wdsf_python_sdk.competitions.queries import CompetitionQuery, CompetitionStatus
 
 
 @pytest.fixture

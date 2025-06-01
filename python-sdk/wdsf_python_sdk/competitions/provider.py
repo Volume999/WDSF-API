@@ -1,4 +1,4 @@
-from wdsf_python_client.competitions.queries import CompetitionQuery
+from wdsf_python_sdk.competitions.queries import CompetitionQuery
 
 
 class CompetitionProvider:
