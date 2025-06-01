@@ -1,37 +1,32 @@
 from datetime import datetime
 from dataclasses import dataclass
-from enum import StrEnum
 
-from wdsf_python_sdk.query import Query
-
-
-class CompetitionStatus(StrEnum):
-    PRE_REGISTRATION = "PreRegistration"
-    REGISTERING = "Registering"
-    REGISTRATION_CLOSED = "RegistrationClosed"
-    PROCESSING = "Processing"
-    CLOSED = "Closed"
-    CANCELED = "Canceled"
+from wdsf_python_sdk.competitions.models import CompetitionStatus, CompetitionDivision
+from wdsf_python_sdk.lib.datetime import serialize_date, serialize_datetime
+from wdsf_python_sdk.lib.serialisation import Serializer
 
 
 @dataclass(frozen=True, kw_only=True)
-class CompetitionQuery(Query):
-    _from: datetime | None = None
+class CompetitionQuery:
+    from_: datetime | None = None
     to: datetime | None = None
     modified_since: datetime | None = None
     world_ranking: bool | None = None
-    division: str | None = None
+    division: CompetitionDivision | None = None
     status: CompetitionStatus | None = None
     location: str | None = None
 
-    def serialize(self) -> dict[str, str]:
+
+class CompetitionQuerySerializer(Serializer[CompetitionQuery]):
+    @classmethod
+    def serialize(cls, obj: CompetitionQuery) -> dict[str, str]:
         serialised = {
-            "from": self._from,
-            "to": self.to,
-            "modifiedsince": self.modified_since,
-            "worldranking": self.world_ranking,
-            "division": self.division,
-            "status": self.status,
-            "location": self.location,
+            "from": serialize_date(obj.from_),
+            "to": serialize_date(obj.to),
+            "modifiedsince": serialize_datetime(obj.modified_since),
+            "worldranking": obj.world_ranking,
+            "division": obj.division,
+            "status": obj.status,
+            "location": obj.location,
         }
         return {k: v for k, v in serialised.items() if v is not None}

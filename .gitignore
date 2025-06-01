@@ -10,4 +10,4 @@ Obj
 # python
 .idea
 .python-version
-
+__pycache__
